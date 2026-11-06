@@ -30,6 +30,5 @@ model Post {
   // every post has userId mapped to id of actual User table.
   userId Int
   user User @relation(fields: [userId], references: [id])
-  
-  
+    
 }
