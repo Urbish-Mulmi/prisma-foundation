@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// we create db entities refered as model: model entity_name-or_model_name
+// this schema.prisma is for branch 01-prisma-basic-crud-operation. No relation is defined in this file/branch.
+model User {
+  id Int @id @default(autoincrement())
+  
+  email String @unique
+  name String?
+  
+}
