@@ -7,12 +7,29 @@ datasource db {
   provider = "postgresql"
 }
 
-// we create db entities refered as model: model entity_name-or_model_name
-// this schema.prisma is for branch 01-prisma-basic-crud-operation. No relation is defined in this file/branch.
+// schema.prisma for branch 2,learning relation establishing
+
+// we create db entities refered as model:
+  // syntax: model entity_name-or_model_name
 model User {
   id Int @id @default(autoincrement())
   
   email String @unique
   name String?
+  posts Post[]
+}
+
+model Post {
+  id Int @id @default(autoincrement())
+  views Int @default(0)
+  title String
+  content String?
+  published Boolean @default(false)
+
+  // establish relation between Post and User table
+  // every post has userId mapped to id of actual User table.
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+  
   
 }
